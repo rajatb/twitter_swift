@@ -29,22 +29,14 @@ class LoginViewController: UIViewController {
     // MARK: - Login
     
     @IBAction func onLogin(_ sender: Any) {
-        let twitterClient = BDBOAuth1SessionManager(baseURL: URL(string: baseUrl), consumerKey: consumerKey, consumerSecret: consuemrSecret)
-        twitterClient?.deauthorize() // bug in BDBOAuth1Manager needs us to deauthorise
-        // #1 get token
-        let callbackURL = URL(string: "twitterdemo://oauth")
-        twitterClient?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: callbackURL, scope: nil, success: {(requestToken: BDBOAuth1Credential?) -> Void in
-            print("I should have gotten a token")
-            print("Request Token: \(requestToken?.token)")
-            // #2 send the user to safari to login
-            if let token = requestToken?.token {
-                let authorizeUrl = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(token)")!
-                UIApplication.shared.open(authorizeUrl, options: [:], completionHandler: nil)
-            }
         
-        }, failure: { (error: Error?) -> Void in
-            print("Got a error:")
-        })
+        let twitterClient = TwitterClient.sharedInstance
+        twitterClient.login(success: { 
+           self.performSegue(withIdentifier: "loginSegue", sender: nil)
+        }) { (error:Error) in
+            print("Error:\(error.localizedDescription)")
+        }
+        
     }
     
 

@@ -9,13 +9,76 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "twitter/LoginViewController.swift"
-            timestampString = "528066999.606932"
+            filePath = "twitter/TwitterClient.swift"
+            timestampString = "528184489.659506"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "homeTimeLine(success:failure:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "twitter.TwitterClient.homeTimeLine () -&gt; ()"
+                  moduleName = "twitter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rbhargava/Personal%20/CodePath/twitter/twitter/TwitterClient.swift"
+                  timestampString = "528181873.05081"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "907">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "twitter.TwitterClient.(homeTimeLine () -&gt; ()).(closure #1)"
+                  moduleName = "twitter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rbhargava/Personal%20/CodePath/twitter/twitter/TwitterClient.swift"
+                  timestampString = "528181873.054845"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "1125">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "twitter.TwitterClient.(homeTimeLine () -&gt; ()).(closure #2)"
+                  moduleName = "twitter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rbhargava/Personal%20/CodePath/twitter/twitter/TwitterClient.swift"
+                  timestampString = "528181873.056061"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "twitter/TweetsViewController.swift"
+            timestampString = "528186684.57063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
-            landmarkName = "onLogin(_:)"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
