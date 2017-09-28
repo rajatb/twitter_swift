@@ -12,6 +12,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet]!
+    
+    let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,16 +23,13 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        TwitterClient.sharedInstance.homeTimeLine(success: { (tweets: [Tweet]) in
-            self.tweets = tweets
-            print(tweets)
-            self.tableView.reloadData()
-            
-        }) { (error: Error) in
-            print("Error: \(error.localizedDescription)")
-        }
-
-        // Do any additional setup after loading the view.
+        getHomeTimeLine()
+        
+        // Pull to refresh
+        
+        refreshControl.addTarget(self, action: #selector(getHomeTimeLine), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +46,19 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.tweet = tweets[indexPath.row]
         return cell
+    }
+    
+    // MARK: - Network 
+    func getHomeTimeLine(){
+        TwitterClient.sharedInstance.homeTimeLine(success: { (tweets: [Tweet]) in
+            self.tweets = tweets
+            self.refreshControl.endRefreshing()
+            self.tableView.reloadData()
+            
+        }) { (error: Error) in
+            print("Error: \(error.localizedDescription)")
+        }
+
     }
 
     /*
