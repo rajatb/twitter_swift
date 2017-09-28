@@ -7,18 +7,37 @@
 //
 
 import UIKit
+import DateToolsSwift
 
 class Tweet: NSObject {
     
+    var user: User?
     var text: String?
     var timeStamp: Date?
+    var timeStampFromattedString: String?
     var retweetCount: Int = 0 //retweet_count
     var favCount: Int = 0 // favorite_count
+    var replyCount: Int = 0
+    var retweetInfo: String?
+    var isRetweetInfo: Bool = false
     
     init(dictionary: NSDictionary){
+        if let userDictionary = dictionary["user"] as? NSDictionary {
+            user = User(dictionary: userDictionary)
+        }
+        
         text = dictionary["text"] as? String
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         favCount = (dictionary["favourite_count"] as? Int) ?? 0
+        replyCount = (dictionary["listed_count"] as? Int) ?? 0
+        if let retweetDictionary = dictionary["retweeted_status"] as? NSDictionary {
+            if let retweetUserDictionary = retweetDictionary["user"] as? NSDictionary{
+                let retweetUser = User(dictionary: retweetUserDictionary)
+                retweetInfo = retweetUser.screenname + " retweeted"
+                isRetweetInfo = true
+            }
+        }
+        
         
         let timeStampString = dictionary["created_at"] as? String
         
@@ -27,6 +46,8 @@ class Tweet: NSObject {
         
         if let timeStampString = timeStampString{
             timeStamp = dateFormatter.date(from: timeStampString)
+            timeStampFromattedString = timeStamp?.shortTimeAgoSinceNow
+            print("Time Stamp: \(timeStampFromattedString)")
         }
     }
     

@@ -18,6 +18,9 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         TwitterClient.sharedInstance.homeTimeLine(success: { (tweets: [Tweet]) in
             self.tweets = tweets
             print(tweets)
