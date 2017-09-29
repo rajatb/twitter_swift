@@ -21,6 +21,8 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     
     weak var delegate: ComposeViewControllerDelegate?
     
+    var replyId: Int?
+    
     let countLabel: UILabel = UILabel(frame: CGRect(x: 225, y: 12, width: 40, height: 20))
     
     let MAX_COUNT = 140

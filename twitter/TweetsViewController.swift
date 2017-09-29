@@ -37,6 +37,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK : - Table View controller
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets?.count ?? 0
     }
@@ -47,6 +48,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         cell.tweet = tweets[indexPath.row]
         return cell
     }
+    
     
     // MARK: - Network 
     func getHomeTimeLine(){
@@ -75,9 +77,21 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let navigationViewController = segue.destination as! UINavigationController
-        let composeViewController = navigationViewController.topViewController as! ComposeViewController
-        composeViewController.delegate = self
+        if (segue.identifier == "detailSegue") {
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)
+            let tweet = tweets![(indexPath?.row)!]
+            
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.tweet = tweet
+            
+        } else {
+            let navigationViewController = segue.destination as! UINavigationController
+            let composeViewController = navigationViewController.topViewController as! ComposeViewController
+            composeViewController.delegate = self
+        }
+        
+        
         
     }
  
