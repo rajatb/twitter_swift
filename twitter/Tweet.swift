@@ -11,6 +11,7 @@ import DateToolsSwift
 
 class Tweet: NSObject {
     
+    var id: Int?
     var user: User?
     var text: String?
     var timeStamp: Date?
@@ -20,6 +21,8 @@ class Tweet: NSObject {
     var replyCount: Int = 0
     var retweetInfo: String?
     var isRetweetInfo: Bool = false
+    var isRetweeted: Bool = false
+    var isFavorited: Bool = false
     
     init(user: User, text: String){
         self.user = user
@@ -33,6 +36,7 @@ class Tweet: NSObject {
             user = User(dictionary: userDictionary)
         }
         
+        id = dictionary["id"] as? Int
         text = dictionary["text"] as? String
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         favCount = (dictionary["favourite_count"] as? Int) ?? 0
@@ -45,6 +49,8 @@ class Tweet: NSObject {
             }
         }
         
+        isRetweeted = (dictionary["retweeted"] as? Bool) ?? false
+        isFavorited = (dictionary["favorited"] as? Bool) ?? false
         
         let timeStampString = dictionary["created_at"] as? String
         
