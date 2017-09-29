@@ -220,7 +220,13 @@
                             <constraint firstItem="gIy-ve-iin" firstAttribute="leading" secondItem="p64-dL-0F7" secondAttribute="leading" id="oXD-or-K0B"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lSN-Rc-FuQ"/>
+                    <navigationItem key="navigationItem" id="lSN-Rc-FuQ">
+                        <barButtonItem key="rightBarButtonItem" title="Compose" id="vPQ-3K-Xur">
+                            <connections>
+                                <segue destination="8e7-g5-fMa" kind="presentation" identifier="composeSegue" id="PkT-9x-Yse"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="gIy-ve-iin" id="zif-yt-Cpj"/>
                     </connections>
@@ -228,6 +234,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rrR-Tv-H7I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1888.8" y="136.28185907046478"/>
+        </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="qFO-vZ-AOP">
+            <objects>
+                <viewController id="bYI-J4-21d" customClass="ComposeViewController" customModule="twitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NI3-HY-uMG"/>
+                        <viewControllerLayoutGuide type="bottom" id="TEM-5n-nDI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KvD-ax-2Vr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DtV-gW-zZR">
+                                <rect key="frame" x="8" y="76" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="LEF-0Y-Pe3"/>
+                                    <constraint firstAttribute="width" constant="50" id="QRa-w8-3X2"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chimney Moron" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqn-hd-TlN">
+                                <rect key="frame" x="66" y="76" width="129" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@moronchimney" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGw-Ca-ck3">
+                                <rect key="frame" x="66" y="98" width="109" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="O6S-3q-K9L">
+                                <rect key="frame" x="8" y="146" width="359" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="CpR-YY-K6a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DtV-gW-zZR" firstAttribute="leading" secondItem="KvD-ax-2Vr" secondAttribute="leading" constant="8" id="BsB-gF-dUD"/>
+                            <constraint firstItem="VGw-Ca-ck3" firstAttribute="leading" secondItem="Cqn-hd-TlN" secondAttribute="leading" id="Cti-v8-AHq"/>
+                            <constraint firstItem="Cqn-hd-TlN" firstAttribute="leading" secondItem="DtV-gW-zZR" secondAttribute="trailing" constant="8" id="TaI-BY-EzQ"/>
+                            <constraint firstItem="O6S-3q-K9L" firstAttribute="top" secondItem="DtV-gW-zZR" secondAttribute="bottom" constant="20" id="Vd9-Ji-ywP"/>
+                            <constraint firstItem="O6S-3q-K9L" firstAttribute="leading" secondItem="KvD-ax-2Vr" secondAttribute="leading" constant="8" id="YLm-ty-z4D"/>
+                            <constraint firstItem="VGw-Ca-ck3" firstAttribute="top" secondItem="Cqn-hd-TlN" secondAttribute="bottom" constant="1" id="gFq-sD-fyv"/>
+                            <constraint firstItem="Cqn-hd-TlN" firstAttribute="top" secondItem="DtV-gW-zZR" secondAttribute="top" id="gfw-KX-Lhl"/>
+                            <constraint firstItem="DtV-gW-zZR" firstAttribute="top" secondItem="NI3-HY-uMG" secondAttribute="bottom" constant="12" id="mR0-jx-uNQ"/>
+                            <constraint firstAttribute="trailing" secondItem="O6S-3q-K9L" secondAttribute="trailing" constant="8" id="wJE-v6-Ri8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="VqB-CM-RTW">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="eAq-mn-J3T">
+                            <connections>
+                                <action selector="onCancel:" destination="bYI-J4-21d" id="jdY-Xa-Cam"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="yTa-4V-lba">
+                            <connections>
+                                <action selector="onTweet:" destination="bYI-J4-21d" id="akJ-oi-Taa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tweetTextView" destination="O6S-3q-K9L" id="3V3-2l-4Kr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g5l-pK-XQz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3788" y="136.28185907046478"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U2j-3B-Asp">
@@ -246,6 +326,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0X-rJ-oyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1116" y="137"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ypO-JR-bgx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8e7-g5-fMa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cKI-gJ-tk4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bYI-J4-21d" kind="relationship" relationship="rootViewController" id="xhG-Yn-scI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tm8-pJ-Q1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2848.8000000000002" y="136.28185907046478"/>
         </scene>
     </scenes>
     <resources>

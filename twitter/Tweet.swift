@@ -21,6 +21,13 @@ class Tweet: NSObject {
     var retweetInfo: String?
     var isRetweetInfo: Bool = false
     
+    init(user: User, text: String){
+        self.user = user
+        self.text = text
+        timeStamp = Date()
+    }
+
+    
     init(dictionary: NSDictionary){
         if let userDictionary = dictionary["user"] as? NSDictionary {
             user = User(dictionary: userDictionary)
@@ -61,6 +68,7 @@ class Tweet: NSObject {
         
         return tweets
     }
+    
     
 
 }

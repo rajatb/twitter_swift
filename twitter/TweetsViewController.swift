@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet]!
@@ -60,15 +60,26 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         }
 
     }
+    
+    // MARK: - Compose View controller
+    func composeViewController(composeViewController:ComposeViewController, updatedTweet tweet: Tweet){
+        tweets.insert(tweet, at: 0)
+        self.tableView.reloadData()
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let navigationViewController = segue.destination as! UINavigationController
+        let composeViewController = navigationViewController.topViewController as! ComposeViewController
+        composeViewController.delegate = self
+        
     }
-    */
+ 
 
 }
