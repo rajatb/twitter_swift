@@ -308,12 +308,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="nameLabel" destination="Cqn-hd-TlN" id="DLb-Sg-h7b"/>
+                        <outlet property="profileImage" destination="DtV-gW-zZR" id="h9t-Ql-3l9"/>
+                        <outlet property="screennameLabel" destination="VGw-Ca-ck3" id="xnr-qe-Hec"/>
+                        <outlet property="tweetButton" destination="yTa-4V-lba" id="6BG-EX-D6B"/>
                         <outlet property="tweetTextView" destination="O6S-3q-K9L" id="3V3-2l-4Kr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g5l-pK-XQz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3788" y="136.28185907046478"/>
+            <point key="canvasLocation" x="3916" y="137"/>
         </scene>
         <!--Tweets Navigation Controller-->
         <scene sceneID="U2j-3B-Asp">

@@ -14,14 +14,17 @@ import UIKit
 }
 
 class ComposeViewController: UIViewController, UITextViewDelegate {
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var screennameLabel: UILabel!
+
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var screenName: UILabel!
     @IBOutlet weak var tweetTextView: UITextView!
     
+    @IBOutlet weak var tweetButton: UIBarButtonItem!
     weak var delegate: ComposeViewControllerDelegate?
     
     var replyId: Int?
+    var replyUser: User?
     
     let countLabel: UILabel = UILabel(frame: CGRect(x: 225, y: 12, width: 40, height: 20))
     
@@ -30,6 +33,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         tweetTextView?.delegate = self
+        loadUserData()
         navConfig()
 
         // Do any additional setup after loading the view.
@@ -57,7 +61,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         if (tweetString != "") {
 //            tweet = Tweet(user: user, text: tweetString!)
             print("Tweet String: \(tweetString)")
-            TwitterClient.sharedInstance.postTweet(tweetText: tweetString!, success: { (tweet: Tweet) in
+            TwitterClient.sharedInstance.postTweet(tweetText: tweetString!, replyId: replyId, success: { (tweet: Tweet) in
                 self.delegate?.composeViewController?(composeViewController: self, updatedTweet: tweet)
                 
             }) { (error: Error) in
@@ -87,6 +91,32 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         countLabel.text = "\(MAX_COUNT)"
         countLabel.textColor = UIColor.black
         self.navigationController?.navigationBar.addSubview(countLabel)
+        
+        if replyId != nil {
+            tweetButton.title = "REPLY"
+        }
+        
+        if let replyUser = replyUser {
+            tweetTextView.text = "\(replyUser.screenname) "
+        }
+    }
+    
+    func loadUserData(){
+        
+        guard let user = User.currentUser else {
+            return
+        }
+        nameLabel.text = user.name
+        screennameLabel.text = user.screenname
+        
+        guard let profileUrl = user.profileUrl else {
+            return
+        }
+        profileImage.setImageWith(profileUrl)
+        profileImage.layer.cornerRadius = 25
+        profileImage.clipsToBounds = true
+        
+        
     }
     
     /*

@@ -101,9 +101,12 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
-    func postTweet(tweetText: String, success: @escaping (Tweet)->(), failure: @escaping (Error)->()){
+    func postTweet(tweetText: String, replyId: Int?, success: @escaping (Tweet)->(), failure: @escaping (Error)->()){
         
-        let param: [String: String] = ["status": tweetText]
+        var param: [String: Any] = ["status": tweetText]
+        if let replyId = replyId {
+            param["in_reply_to_status_id"] = replyId
+        }
         post("1.1/statuses/update.json", parameters: param, progress: nil, success: { (task:URLSessionDataTask, response: Any?) in
             
             let tweeetDictionary = response as! NSDictionary

@@ -98,6 +98,7 @@ class DetailViewController: UIViewController {
         let navigationController = segue.destination as! UINavigationController
         let composeViewController = navigationController.topViewController as! ComposeViewController
         composeViewController.replyId = 1
+        composeViewController.replyUser = tweet.user
         
     }
     
