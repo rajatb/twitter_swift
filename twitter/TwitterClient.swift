@@ -14,6 +14,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     let consuemrSecret = "nnkCGQ2Xz9IQHozWNkiNWRXThdaAhwl0gos3iX0ITXqShv4WW5"
     let baseUrl = "https://api.twitter.com"
     
+    
     var loginSuccess: (() -> ())?
     var loginFailure: ((Error) -> ())?
     
@@ -41,6 +42,12 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func logout() {
+        User.currentUser = nil
+        deauthorize()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:User.userDidLogoutNotification), object: nil)
+    }
+    
     func handleOpenUrl(url: URL){
         
         print("URL:\(url)")
@@ -48,7 +55,16 @@ class TwitterClient: BDBOAuth1SessionManager {
         let requestToken = BDBOAuth1Credential(queryString: url.query)
         
         fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken:BDBOAuth1Credential?) in
-            self.loginSuccess?()
+            
+            self.currentAccount(success: { (user:User) in
+                User.currentUser = user
+                self.loginSuccess?()
+            }, failure: { (error:Error) in
+                print(error.localizedDescription)
+                self.loginFailure?(error)
+            })
+            
+            
             
         }, failure: { (error:Error?) in
             self.loginFailure?(error!)
@@ -56,16 +72,17 @@ class TwitterClient: BDBOAuth1SessionManager {
         
     }
     
-    func currentAccount() {
+    func currentAccount(success: @escaping (User)->(), failure: @escaping (Error)->()) {
         //Twiter client get info
         self.get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             
             let userDictionary = response as! NSDictionary
             let user = User(dictionary: userDictionary)
+            success(user)
             print("Name: \(user.name)")
             
         }, failure: { (task: URLSessionDataTask?, error: Error) in
-            
+            failure(error)
         })
     }
     

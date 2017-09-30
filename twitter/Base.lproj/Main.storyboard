@@ -222,6 +222,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lSN-Rc-FuQ">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="rlk-ck-yOH">
+                            <connections>
+                                <action selector="onLogout:" destination="FTq-z3-7mc" id="VOy-gF-Qmf"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Compose" id="vPQ-3K-Xur">
                             <connections>
                                 <segue destination="8e7-g5-fMa" kind="presentation" identifier="composeSegue" id="PkT-9x-Yse"/>
@@ -310,10 +315,10 @@
             </objects>
             <point key="canvasLocation" x="3788" y="136.28185907046478"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tweets Navigation Controller-->
         <scene sceneID="U2j-3B-Asp">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t0I-XX-Xdc" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="t0I-XX-Xdc" customClass="TweetsNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DmU-GP-wJG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -526,6 +531,6 @@
         <image name="retweet" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sbd-mg-bpq"/>
+        <segue reference="PkT-9x-Yse"/>
     </inferredMetricsTieBreakers>
 </document>

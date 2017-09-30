@@ -69,6 +69,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         self.tableView.reloadData()
     }
 
+    @IBAction func onLogout(_ sender: Any) {
+       
+        TwitterClient.sharedInstance.logout()
+    }
     
     // MARK: - Navigation
 
@@ -94,6 +98,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         
     }
+    
+    
  
 
 }

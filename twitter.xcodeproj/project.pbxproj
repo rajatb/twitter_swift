@@ -34,6 +34,7 @@
 		98318AF31F78BA8F0044DB15 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		989DA64B1F7D7D1600F6374B /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		989DA64D1F7EC38900F6374B /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		989DA64F1F80535E00F6374B /* twitter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = twitter.entitlements; sourceTree = "<group>"; };
 		98CB5D191F7B08FF005D9704 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		98CB5D1B1F7B0923005D9704 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		98CB5D1F1F7B1F25005D9704 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 		98318ADE1F78B5290044DB15 /* twitter */ = {
 			isa = PBXGroup;
 			children = (
+				989DA64F1F80535E00F6374B /* twitter.entitlements */,
 				98CB5D181F7B08C2005D9704 /* API */,
 				98CB5D171F7B08B8005D9704 /* Models */,
 				98318AF21F78BA630044DB15 /* View */,
@@ -176,7 +178,13 @@
 				TargetAttributes = {
 					98318ADB1F78B5290044DB15 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6VDG77DH63;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -404,6 +412,8 @@
 			baseConfigurationReference = 155CC877A9CC02E50657C9EC /* Pods-twitter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = twitter/twitter.entitlements;
+				DEVELOPMENT_TEAM = 6VDG77DH63;
 				INFOPLIST_FILE = twitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rnr.twitter;
@@ -417,6 +427,8 @@
 			baseConfigurationReference = C15E2ACF9804B01E8D7936DF /* Pods-twitter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = twitter/twitter.entitlements;
+				DEVELOPMENT_TEAM = 6VDG77DH63;
 				INFOPLIST_FILE = twitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rnr.twitter;
