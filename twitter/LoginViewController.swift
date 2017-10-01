@@ -11,12 +11,19 @@ import BDBOAuth1Manager
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var twitterBirdImage: UIImageView!
+    
+    
     let consumerKey = "EeHTyym25HNc21vjWpuvfIyHv"
     let consuemrSecret = "nnkCGQ2Xz9IQHozWNkiNWRXThdaAhwl0gos3iX0ITXqShv4WW5"
     let baseUrl = "https://api.twitter.com"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Animat the bird
+        animateBird()
+        
 
         // Do any additional setup after loading the view.
     }
@@ -24,6 +31,19 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func animateBird(){
+        self.twitterBirdImage.transform = CGAffineTransform(scaleX: 5, y: 5)
+        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: { 
+            print("put code here")
+            self.twitterBirdImage.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }) { (isCompleted: Bool) in
+            
+        }
+
+
+
     }
     
     // MARK: - Login

@@ -34,14 +34,24 @@
                                     <action selector="onLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JUe-qy-stc"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Twitter_Logo_Blue" translatesAutoresizingMaskIntoConstraints="NO" id="9DT-ne-SUv">
+                                <rect key="frame" x="137" y="105" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="IiQ-Bh-aV9"/>
+                                    <constraint firstAttribute="height" constant="100" id="wJA-z1-ugo"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rFG-W8-2vz" secondAttribute="bottom" constant="151" id="1ed-WI-imv"/>
+                            <constraint firstItem="9DT-ne-SUv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9YT-Xw-ccu"/>
+                            <constraint firstItem="9DT-ne-SUv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="85" id="FmY-Ur-bdk"/>
                             <constraint firstItem="rFG-W8-2vz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lyu-rg-lXX"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="twitterBirdImage" destination="9DT-ne-SUv" id="qKG-TC-KXR"/>
                         <segue destination="t0I-XX-Xdc" kind="presentation" identifier="loginSegue" id="NMZ-bE-vzG"/>
                     </connections>
                 </viewController>
@@ -530,6 +540,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Twitter_Logo_Blue" width="200" height="200"/>
         <image name="favorite" width="120" height="120"/>
         <image name="reply" width="120" height="120"/>
         <image name="retweet" width="120" height="120"/>
